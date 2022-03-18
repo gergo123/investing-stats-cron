@@ -1,0 +1,17 @@
+service: investing-stats-cron
+
+frameworkVersion: '2 || 3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+custom:
+  NASDAQ_API_KEY: grbkFaNNuSzZ2zEbczjW
+
+functions:
+  cronHandler:
+    handler: source/nasdaq-monthly-pe.run
+    events:
+      # Invoke Lambda function every 2nd minute from Mon-Fri
+      - schedule: cron(0/2 * ? * MON-FRI *)
