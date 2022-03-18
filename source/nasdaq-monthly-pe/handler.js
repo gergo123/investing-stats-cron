@@ -2,4 +2,5 @@
 
 const NasdaqMonthlyPeModule = require('./nasdaq-monthly-pe.module');
 
-module.exports = NasdaqMonthlyPeModule;
+const NasdaqMonthlyPeHandler = NasdaqMonthlyPeModule;
+module.exports = NasdaqMonthlyPeHandler;
