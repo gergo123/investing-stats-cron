@@ -5,12 +5,13 @@ frameworkVersion: '2 || 3'
 provider:
   name: aws
   runtime: nodejs12.x
-custom:
-  NASDAQ_API_KEY: grbkFaNNuSzZ2zEbczjW
 
 functions:
   cronHandler:
     handler: source/nasdaq-monthly-pe.run
+    environment:
+      # NASDAQ_API_KEY: 'YOUR NASDAQ API KEY GOES HERE'
+      # NASDAQ_API_KEY: ${ssm:/nasdaq-api-key~true}
     events:
       # First day of each month
       - schedule: cron(1 0 1 * ? *)

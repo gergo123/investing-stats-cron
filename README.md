@@ -143,3 +143,7 @@ After invocation, you should see output similar to:
 ```bash
 Your cron function "aws-node-scheduled-cron-dev-rateHandler" ran at Fri Mar 05 2021 15:14:39 GMT+0100 (Central European Standard Time)
 ```
+
+### Setting up NASDAQ api key
+Using aproach #1 from: 
+https://www.serverless.com/blog/aws-secrets-management/

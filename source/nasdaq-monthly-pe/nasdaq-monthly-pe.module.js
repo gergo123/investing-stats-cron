@@ -7,8 +7,12 @@ const NasdaqMonthlyPeModule = async (event, context) => {
     const time = new Date();
     console.log(`Your cron function "${context.functionName}" ran at ${time}`);
 
-    // TODO replace api key here from config file
-    var data = await service.loadData('grbkFaNNuSzZ2zEbczjW');
+    var apikey = process.env.NASDAQ_API_KEY;
+    if (!apikey) {
+        throw new Error('No nasdaq api key given! Please provide `NASDAQ_API_KEY` environment variable!');
+    }
+
+    var data = await service.loadData(apikey);
     var results = service.processData(data.data.dataset);
 };
 
