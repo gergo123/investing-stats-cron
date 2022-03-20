@@ -1,5 +1,5 @@
-const axios = require('axios');
 const service = require('./nasdaq-monthly-pe.service')();
+const nasdaqUtil = require('./../nasdaq-utils/process-data-columns')();
 
 'use strict'
 
@@ -13,7 +13,10 @@ const NasdaqMonthlyPeModule = async (event, context) => {
     }
 
     var data = await service.loadData(apikey);
-    var results = service.processData(data.data.dataset);
+    var results = service.mapResponse(data.data);
+    results = nasdaqUtil.dataArrayToObject(results);
+    var htmlResults = service.processData(results);
+
 };
 
 module.exports = NasdaqMonthlyPeModule;
