@@ -4,7 +4,14 @@
   "description": "Example of creating a function that runs as a cron job using the serverless `schedule` event",
   "author": "",
   "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
-    "axios": "^0.26.1"
+    "axios": "^0.26.1",
+    "underscore": "^1.13.2"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }
