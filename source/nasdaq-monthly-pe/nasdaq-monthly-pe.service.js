@@ -35,6 +35,8 @@ const NasdaqMonthlyPeService = () => {
         const cssStyle = fs.readFileSync(path.resolve(__dirname, 'output/styles.css'), 'utf8')
 
         const bodyPart = `
+        <h2>${statistics.name}</h2>
+        <p>${statistics.description}</p>
     <table>
     <thead>
         <th>Date</th>
@@ -56,7 +58,6 @@ ${statistics.data.map(row => {
         `
         var output = htmlIndex.replace('{body}', bodyPart);
         output = output.replace('{css}', `<style>\r\n${cssStyle}\r\n</style>\r\n`);
-        console.log(output);
 
         return output;
     };

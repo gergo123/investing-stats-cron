@@ -2,6 +2,8 @@ const NasdaqMonthlyPeService = require('./nasdaq-monthly-pe.service')();
 
 test('process data array to array of objects', () => {
     var res = NasdaqMonthlyPeService.processData({
+        name: 'Test name',
+        description: 'Some more description',
         column_names: ["Date", "Value"],
         data: [
             { Date: "2022-03-01", Value: 24.56 },

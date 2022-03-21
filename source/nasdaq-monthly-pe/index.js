@@ -1,1 +1,1 @@
-module.exports.run = require('./handler')
+module.exports.run = require('./handler');

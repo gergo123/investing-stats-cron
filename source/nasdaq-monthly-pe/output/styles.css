@@ -1,3 +1,12 @@
-html {
-    background-color: antiquewhite;
+table tr td {
+    padding: 5px;
+}
+table thead {
+    background-color: burlywood;
+}
+table tbody tr:nth-child(2n+1) {
+    background-color: #afecdc;
+}
+table tbody tr:nth-child(2n) {
+    background-color: #dfecdc;
 }
