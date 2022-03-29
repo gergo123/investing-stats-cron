@@ -17,3 +17,19 @@ functions:
       - schedule: cron(1 0 1 * ? *)
       # last day of each month
       - schedule: cron(1 0 L * ? *)
+  emailDispatcher:
+    handler: source/e-mail-receiver.dispatch
+    environment:
+      EMAIL_TO_ADDRESSES: 'test@mail.com'
+      SENDER_ADDRESS: 'noreply@notification.com'
+    events:
+      - sns:
+        arn: !Ref EmailTopic
+        topicName: EmailReceiverTopic
+
+resources:
+  Resources:
+    EmailTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: EmailReceiverTopic
