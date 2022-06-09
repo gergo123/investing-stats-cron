@@ -14,22 +14,27 @@ functions:
       # NASDAQ_API_KEY: ${ssm:/nasdaq-api-key~true}
     events:
       # First day of each month
-      - schedule: cron(1 0 1 * ? *)
+      - schedule: cron(1 1 1 * ? *)
       # last day of each month
-      - schedule: cron(1 0 L * ? *)
+      - schedule: cron(1 1 L * ? *)
   emailDispatcher:
     handler: source/e-mail-receiver.dispatch
     environment:
       EMAIL_TO_ADDRESSES: 'test@mail.com'
       SENDER_ADDRESS: 'noreply@notification.com'
     events:
-      - sns:
-        arn: !Ref EmailTopic
-        topicName: EmailReceiverTopic
+      # Every hour
+      - schedule: cron(0 * * * *)
+  mnbInflation:
+    handler: source/nasdaq-monthly-pe.run
+    environment:
+    events:
+      # Every hour
+      - schedule: cron(0 * * * *)
 
 resources:
   Resources:
-    EmailTopic:
+    AddMailToQueue:
       Type: AWS::SNS::Topic
       Properties:
-        TopicName: EmailReceiverTopic
+        TopicName: AddMailToQueueTN
