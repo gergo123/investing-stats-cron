@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "node-html-parser": "^5.3.3",
     "underscore": "^1.13.2"
   },
   "devDependencies": {
