@@ -42,7 +42,7 @@ const EmailService = () => {
         var sendPromise = new AWS.SES({ apiVersion: '2010-12-01' }).sendEmail(params).promise();
 
         // Handle promise's fulfilled/rejected states
-        sendPromise.then(
+        return sendPromise.then(
             function (data) {
                 console.log(data.MessageId);
             }).catch(
